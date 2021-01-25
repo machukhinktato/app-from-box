@@ -16,7 +16,9 @@
           <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
           <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
       {% endfor %}
+  <button><a href="{% url 'index' %}" styles="underline: hidden;">back to index page</a></button>
   <input type="submit" value="Vote">
   </form>
+
 </body>
 </html>
