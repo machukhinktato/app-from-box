@@ -20,6 +20,10 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now())
+
+
 class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
@@ -39,6 +43,7 @@ def vote(request, question_id):
         selected_choice.save()
 
     return HttpResponseRedirect(reverse('polls:results', args=(question_id,)))
+
 
 """ 
 the functional version may look something like this
